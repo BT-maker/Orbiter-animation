@@ -1,0 +1,431 @@
+/* ===== CSS VARIABLES ===== */
+:root {
+    --secondary-color: #6c757d;
+    --dark-color: #343a40;
+    --white-color: #ffffff;
+    
+    --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    
+    --font-primary: 'Poppins', sans-serif;
+}
+
+/* ===== RESET & BASE STYLES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-primary);
+    line-height: 1.6;
+    color: var(--dark-color);
+    overflow-x: hidden;
+    background: #f8f9fa;
+}
+
+/* ===== SECTION STYLES ===== */
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--gradient-primary);
+    border-radius: 2px;
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    color: var(--secondary-color);
+    margin-bottom: 3rem;
+}
+
+/* ===== ANIMATED SKILLS ORBITS ===== */
+.orbit-section {
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.skills-animation-container {
+    position: relative;
+    width: 350px;
+    height: 350px;
+    margin: 0 auto;
+    border-radius: 50%;
+}
+
+.orbit {
+    background: radial-gradient(circle at center, rgba(97, 218, 251, 0.08) 0%, transparent 70%);
+}
+
+
+
+/* ---------- Container for the orbiting circles animation ---------- */
+#orbit-container {
+    position: relative;
+    top: 25px;
+    left: 25px;
+    height: 300px;
+    width: 300px;
+}
+
+/* ---------- Center Code Icon ---------- */
+.center-code-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.2),
+        0 4px 12px rgba(0, 0, 0, 0.15);
+    border: 3px solid var(--white-color);
+    z-index: 10;
+    animation: centerPulse 3s ease-in-out infinite;
+}
+
+.center-code-icon i {
+    font-size: 1.8rem;
+    color: var(--white-color);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+@keyframes centerPulse {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.05);
+    }
+}
+
+/* ---------- Inner orbit - This is the circles closest to the central point ---------- */
+#inner-orbit {
+    position: absolute;
+    top: 75px;
+    left: 75px;
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    animation: spin-right 30s linear infinite;
+    border: 2px rgba(97, 218, 251, 0.8) dashed;
+}
+
+
+
+/* ---------- Repeating styles for the inner orbiting circles ---------- */
+.inner-orbit-circles {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    background: linear-gradient(135deg, #ffffff, #f8f9fa);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.2),
+        0 4px 12px rgba(0, 0, 0, 0.15),
+        inset 0 2px 0 rgba(255, 255, 255, 0.9);
+    border: 3px solid var(--white-color);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    animation: counter-rotate 30s linear infinite;
+}
+
+/*  Inner Orbit Positions */
+#inner-orbit .inner-orbit-circles:nth-child(1) {
+    top: 50px;
+    left: -25px;
+}
+
+#inner-orbit .inner-orbit-circles:nth-child(2) {
+    top: 95px;
+    left: 100px;
+}
+
+#inner-orbit .inner-orbit-circles:nth-child(3) {
+    top: 50px;
+    left: 125px;
+}
+
+
+
+/* ---------- Middle orbit - This is the circles second closest to the central point ---------- */
+#middle-orbit {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    width: 250px;
+    height: 250px;
+    border-radius: 100%;
+    animation: spin-right 30s linear infinite reverse;
+    border: 2px rgba(97, 218, 251, 0.8) dashed;
+}
+
+
+
+/* ---------- Repeating styles for the middle orbiting circles ---------- */
+.middle-orbit-circles {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    background: linear-gradient(135deg, #ffffff, #f8f9fa);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.2),
+        0 4px 12px rgba(0, 0, 0, 0.15),
+        inset 0 2px 0 rgba(255, 255, 255, 0.9);
+    border: 3px solid var(--white-color);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    animation: counter-rotate-reverse 30s linear infinite;
+}
+
+/*  Middle Orbit Positions */
+#middle-orbit .middle-orbit-circles:nth-child(1) {
+    top: -25px;
+    left: 125px;
+}
+
+#middle-orbit .middle-orbit-circles:nth-child(2) {
+    top: 25px;
+    left: 200px;
+}
+
+#middle-orbit .middle-orbit-circles:nth-child(3) {
+    top: 220px;
+    left: 125px;
+}
+
+#middle-orbit .middle-orbit-circles:nth-child(4) {
+    top: 125px;
+    left: -25px;
+}
+
+
+
+/* ---------- Outer orbit - This is the circles furthest away from the central point ---------- */
+#outer-orbit {
+    position: absolute;
+    top: -25px;
+    left: -25px;
+    width: 350px;
+    height: 350px;
+    border-radius: 100%;
+    animation: spin-right 30s linear infinite;
+    border: 2px rgba(97, 218, 251, 0.8) dashed;
+}
+
+
+
+/* ---------- Repeating styles for the outer orbiting circles ---------- */
+.outer-orbit-circles {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    background: linear-gradient(135deg, #ffffff, #f8f9fa);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.2),
+        0 4px 12px rgba(0, 0, 0, 0.15),
+        inset 0 2px 0 rgba(255, 255, 255, 0.9);
+    border: 3px solid var(--white-color);
+    animation: counter-rotate 30s linear infinite;
+}
+
+/*  Outer Orbit Positions */
+#outer-orbit .outer-orbit-circles:nth-child(1) {
+    top: -25px;
+    left: 175px;
+}
+
+#outer-orbit .outer-orbit-circles:nth-child(2) {
+    top: 175px;
+    left: -25px;
+}
+
+
+
+/* Icon styles for orbit circles */
+.inner-orbit-circles i,
+.middle-orbit-circles i,
+.outer-orbit-circles i {
+    font-size: 1.8rem;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+}
+
+/*  tech icon colors */
+#inner-orbit .inner-orbit-circles:nth-child(1) i { color: #e34f26; } /* HTML */
+#inner-orbit .inner-orbit-circles:nth-child(2) i { color: #1572b6; } /* CSS */
+#inner-orbit .inner-orbit-circles:nth-child(3) i { color: #cf649a; } /* Sass */
+
+#middle-orbit .middle-orbit-circles:nth-child(1) i { color: #f7df1e; } /* JavaScript */
+#middle-orbit .middle-orbit-circles:nth-child(2) i { color: #61dafb; } /* React */
+#middle-orbit .middle-orbit-circles:nth-child(3) i { color: #000000; } /* Next.js */
+#middle-orbit .middle-orbit-circles:nth-child(4) i { color: #7952b3; } /* Bootstrap */
+
+#outer-orbit .outer-orbit-circles:nth-child(1) i { color: #06b6d4; } /* Tailwind */
+#outer-orbit .outer-orbit-circles:nth-child(2) i { color: #000000; } /* Shadcn */
+
+
+
+/* ---------- Animation ---------- */
+@keyframes spin-right {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes counter-rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+@keyframes counter-rotate-reverse {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+    .skills-animation-container {
+        width: 280px;
+        height: 280px;
+    }
+    
+    #orbit-container {
+        height: 230px;
+        width: 230px;
+    }
+    
+    .center-code-icon {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .center-code-icon i {
+        font-size: 1.2rem;
+    }
+    
+    #inner-orbit {
+        top: 65px;
+        left: 65px;
+        width: 100px;
+        height: 100px;
+    }
+    
+    #middle-orbit {
+        top: 35px;
+        left: 35px;
+        width: 160px;
+        height: 160px;
+    }
+    
+    #outer-orbit {
+        top: -17px;
+        left: -17px;
+        width: 264px;
+        height: 264px;
+    }
+    
+    .inner-orbit-circles,
+    .middle-orbit-circles,
+    .outer-orbit-circles {
+        height: 35px;
+        width: 35px;
+    }
+    
+    .inner-orbit-circles i,
+    .middle-orbit-circles i,
+    .outer-orbit-circles i {
+        font-size: 1.2rem;
+    }
+    
+    /* Mobile positioning adjustments */
+    #inner-orbit .inner-orbit-circles:nth-child(1) {
+        top: 65px;
+        left: -17px;
+    }
+    
+    #inner-orbit .inner-orbit-circles:nth-child(2) {
+        top: -17px;
+        left: 65px;
+    }
+    
+    #inner-orbit .inner-orbit-circles:nth-child(3) {
+        top: 65px;
+        left: 82px;
+    }
+    
+    #middle-orbit .middle-orbit-circles:nth-child(1) {
+        top: -17px;
+        left: 80px;
+    }
+    
+    #middle-orbit .middle-orbit-circles:nth-child(2) {
+        top: 80px;
+        left: 145px;
+    }
+    
+    #middle-orbit .middle-orbit-circles:nth-child(3) {
+        top: 145px;
+        left: 80px;
+    }
+    
+    #middle-orbit .middle-orbit-circles:nth-child(4) {
+        top: 80px;
+        left: -17px;
+    }
+    
+    #outer-orbit .outer-orbit-circles:nth-child(1) {
+        top: -17px;
+        left: 132px;
+    }
+    
+    #outer-orbit .outer-orbit-circles:nth-child(2) {
+        top: 132px;
+        left: -17px;
+    }
+    
+
+}
